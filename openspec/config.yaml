@@ -1,0 +1,39 @@
+schema: spec-driven
+
+context: |
+  This file is for OpenSpec guidance only.
+  Do not duplicate product documentation from README.md or AI-oriented repository guidance from AGENTS.md.
+
+  Use README.md as the primary source for human-facing project and feature documentation.
+  Use AGENTS.md as the primary source for concise AI-oriented repository guidance.
+
+  Keep OpenSpec artifacts focused on change definition, scope control, decision capture, task quality, and archive readiness.
+  Prefer narrow, reviewable changes with clear phases.
+  Use a commit after each completed phase when git is available.
+  A change is not considered applied or ready to archive until implementation is complete and required validation passes.
+
+rules:
+  proposal:
+    - State the problem, scope, and non-goals in plain language.
+    - Keep the proposal concise and scoped to one change.
+    - Do not restate repository background that already exists in README.md or AGENTS.md.
+  design:
+    - Only add a design doc when the change has meaningful architecture, workflow, validation, or failure-mode complexity.
+    - Capture decisions, tradeoffs, and unresolved questions.
+    - Prefer minimal designs that extend existing repository patterns instead of introducing unnecessary structure.
+  spec:
+    - Capture concrete behavioral requirements using explicit SHALL-style requirements where appropriate.
+    - Focus on new or changed behavior only.
+    - Do not repeat general system documentation already covered elsewhere.
+  tasks:
+    - Use 10 tasks or fewer per change.
+    - Each task must be concrete, independently understandable, and outcome-oriented.
+    - Prefer tasks that represent a small reviewable unit of work, not broad phases with hidden sub-work.
+    - Include required validation work in the task list when behavior changes.
+    - Always include a task to review whether README.md and AGENTS.md need updates for the change, and update them when needed.
+    - Do not mark a change complete if lint, tests, build, or other project validation is failing.
+  archive:
+    - Only archive a change after verifying the implementation is complete and matches the final proposal, design, tasks, and specs.
+    - Required validation today is npm run lint, npm test, and npm run build.
+    - If the repository gains additional standard validation in the future, run that too before archiving.
+    - Record any intentionally skipped validation with a reason before archive approval.
